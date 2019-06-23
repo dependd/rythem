@@ -10,7 +10,7 @@ public class NoteControlor : MonoBehaviour {
     public float timing;
 	// Use this for initialization
 	void Start () {
-        controlor = GameObject.Find("GameControlor").GetComponent<GameControlor>();
+        controlor = GameObject.Find("GameController").GetComponent<GameControlor>();
         _UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
         hs = controlor.highSpeed;
 	}

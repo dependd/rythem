@@ -6,6 +6,7 @@ public class StartGame : MonoBehaviour {
     [SerializeField]AudioSource audioSource;
     [SerializeField] AudioClip[] clips;
 
+    [SerializeField] int i;
 	// Use this for initialization
 	void Start () {
 		
@@ -18,7 +19,7 @@ public class StartGame : MonoBehaviour {
     
     public void BGMStart()
     {
-        audioSource.clip = clips[0];
+        audioSource.clip = clips[i];
         audioSource.Play();
     }
 
