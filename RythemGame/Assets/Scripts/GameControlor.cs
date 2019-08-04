@@ -15,13 +15,14 @@ public class GameControlor : MonoBehaviour {
     private int[] _lineNum;
     public int combo = 0;
 
+    private int maxCombo;
     public string filePass;
     private int _SpawndNotesCount = 0;
     public int _LineCheckNoteCount = 0;
     
     private float _startTime = 0;
 
-    public float timeOffset = -1;
+    public float timeOffset = 0;
 
     private bool _isPlaying = false;
     public GameObject startButton;
@@ -59,8 +60,9 @@ public class GameControlor : MonoBehaviour {
 
     void CheckNextNotes()
     {
-        while (_timing[_SpawndNotesCount] + timeOffset < GetMusicTime() && _timing[_SpawndNotesCount] != 0)
+        while (maxCombo == _SpawndNotesCount)
         {
+            if (_timing[_SpawndNotesCount] + timeOffset < GetMusicTime() && _timing[_SpawndNotesCount] != 0) return;
             SpawnNotes(_lineNum[_SpawndNotesCount]);
             _SpawndNotesCount++;
         }
@@ -132,10 +134,12 @@ public class GameControlor : MonoBehaviour {
 
     bool CheckNoteTiming(int num,GameObject lineObj)
     {
-        if(lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.1f && lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() - 0.1f && _lineNum[_LineCheckNoteCount] == num)
+        if(lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.5f &&
+           lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.5f && 
+           _lineNum[_LineCheckNoteCount] == num)
         {
             combo++;
-            score += 3000;
+            score += 200;
             return true;
         }
         //if (_timing[_LineCheckNoteCount] + timeOffset < GetMusicTime() + 1 && _timing[_LineCheckNoteCount] + timeOffset < GetMusicTime() - 1 && _lineNum[_LineCheckNoteCount] == num)
@@ -154,8 +158,8 @@ public class GameControlor : MonoBehaviour {
 
     void SpawnNotes(int num)
     {
-        var obj = Instantiate(notes[num],new Vector3(-4.0f + (2.0f * num), 5.0f, 0), Quaternion.identity);
-        obj.name += _SpawndNotesCount;
+        var obj = Instantiate(notes[num],new Vector3(-4.0f + (2.0f * num), 0f, 0), Quaternion.identity);
+        obj.name = "Note"+ _SpawndNotesCount ;
         obj.transform.parent = NoteLine[num].transform;
         obj.GetComponent<NoteControlor>().timing = _timing[_SpawndNotesCount];
     }
@@ -180,6 +184,7 @@ public class GameControlor : MonoBehaviour {
             }
             i++;
         }
+        maxCombo = i;
     }
 
     private void InstanceTiming(int hs)
@@ -211,6 +216,7 @@ public class GameControlor : MonoBehaviour {
 
     float GetMusicTime()
     {
+        Debug.Log(Time.time - _startTime);
         return Time.time - _startTime;
     }
 }
