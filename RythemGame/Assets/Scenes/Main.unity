@@ -442,7 +442,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d92fb563f41d38c4bb65e36d9ece4044, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 94bd74edd6c23364eb800f7cc0ccd552, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1213,7 +1213,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -130}
+  m_AnchoredPosition: {x: 0, y: -230}
   m_SizeDelta: {x: 650, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2009063134
@@ -1313,7 +1313,7 @@ MonoBehaviour:
   - {fileID: 5888204205332000251, guid: b4afb3bacf34ff14da5f7d7fd3c30ed5, type: 3}
   - {fileID: 5888204205332000251, guid: b4afb3bacf34ff14da5f7d7fd3c30ed5, type: 3}
   combo: 0
-  filePass: CSV/Iryuzyonista
+  filePass: CSV/NothingButYoU
   _LineCheckNoteCount: 0
   timeOffset: -1
   startButton: {fileID: 0}

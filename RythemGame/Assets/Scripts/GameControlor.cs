@@ -123,16 +123,16 @@ public class GameControlor : MonoBehaviour {
     }
     void SuccessTap()
     {
-        _LineCheckNoteCount++;
         _UIManager.ComboCount(combo);
         _UIManager.ScoreUp(score);
-        Destroy(GameObject.Find("Note(Clone)" + _SpawndNotesCount));
+        Destroy(GameObject.Find("Cube(Clone)" + _LineCheckNoteCount));
+        _LineCheckNoteCount++;
     }
 
 
     bool CheckNoteTiming(int num,GameObject lineObj)
     {
-        if(lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.5f && lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() - 0.5f && _lineNum[_LineCheckNoteCount] == num)
+        if(lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.1f && lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() - 0.1f && _lineNum[_LineCheckNoteCount] == num)
         {
             combo++;
             score += 3000;
@@ -154,7 +154,7 @@ public class GameControlor : MonoBehaviour {
 
     void SpawnNotes(int num)
     {
-        var obj = Instantiate(notes[num],new Vector3(-4.0f + (2.0f * num), 9.0f, 0), Quaternion.identity);
+        var obj = Instantiate(notes[num],new Vector3(-4.0f + (2.0f * num), 5.0f, 0), Quaternion.identity);
         obj.name += _SpawndNotesCount;
         obj.transform.parent = NoteLine[num].transform;
         obj.GetComponent<NoteControlor>().timing = _timing[_SpawndNotesCount];
