@@ -60,9 +60,8 @@ public class GameControlor : MonoBehaviour {
 
     void CheckNextNotes()
     {
-        while (maxCombo == _SpawndNotesCount)
+        while (_timing[_SpawndNotesCount] + timeOffset < GetMusicTime() - timing && _timing[_SpawndNotesCount] != 0)
         {
-            if (_timing[_SpawndNotesCount] + timeOffset < GetMusicTime() && _timing[_SpawndNotesCount] != 0) return;
             SpawnNotes(_lineNum[_SpawndNotesCount]);
             _SpawndNotesCount++;
         }
@@ -72,48 +71,138 @@ public class GameControlor : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.D))
         {
             if (NoteLine[0].transform.childCount == 0) return;
-            if (CheckNoteTiming(0,NoteLine[0]))
+            var noteObj = NoteLine[0].GetComponentInChildren<NoteControlor>().gameObject;
+            //if (CheckNoteTiming(0,noteObj))
+            //{
+            //    Debug.Log("line0 == true");
+            //    SuccessTap(noteObj);
+            //}
+            //else 
+            //{
+            //    MissTap(noteObj);
+            //}
+            switch (CheckNoteTiming(0, noteObj))
             {
-                Debug.Log("line0 == true");
-                SuccessTap();
+                case "Parfect":
+                    Debug.Log("line0 == true");
+                    SuccessTap(noteObj);
+                    break;
+                case "Miss":
+                    Debug.Log("miss");
+                    MissTap(noteObj);
+                    break;
+                default:
+                    break;
             }
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
             //Debug.Log(GetMusicTime());
             if (NoteLine[1].transform.childCount == 0) return;
-            if (CheckNoteTiming(1,NoteLine[1]))
+            var noteObj = NoteLine[1].GetComponentInChildren<NoteControlor>().gameObject;
+            //if (CheckNoteTiming(1,noteObj))
+            //{
+            //    Debug.Log("line1 == true");
+            //    SuccessTap(noteObj);
+            //}
+            //else
+            //{
+            //    MissTap(noteObj);
+            //}
+            switch (CheckNoteTiming(1, noteObj))
             {
-                Debug.Log("line1 == true");
-                SuccessTap();
+                case "Parfect":
+                    Debug.Log("line1 == true");
+                    SuccessTap(noteObj);
+                    break;
+                case "Miss":
+                    Debug.Log("miss");
+                    MissTap(noteObj);
+                    break;
+                default:
+                    break;
             }
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (NoteLine[2].transform.childCount == 0) return;
-            if (CheckNoteTiming(2,NoteLine[2]))
+            var noteObj = NoteLine[2].GetComponentInChildren<NoteControlor>().gameObject;
+            //if (CheckNoteTiming(2,noteObj))
+            //{
+            //    Debug.Log("line2 == true");
+            //    SuccessTap(noteObj);
+            //}
+            //else
+            //{
+            //    MissTap(noteObj);
+            //}
+            switch (CheckNoteTiming(2, noteObj))
             {
-                Debug.Log("line2 == true");
-                SuccessTap();
+                case "Parfect":
+                    Debug.Log("line2 == true");
+                    SuccessTap(noteObj);
+                    break;
+                case "Miss":
+                    Debug.Log("miss");
+                    MissTap(noteObj);
+                    break;
+                default:
+                    break;
             }
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
             //Debug.Log(GetMusicTime());
             if (NoteLine[3].transform.childCount == 0) return;
-            if (CheckNoteTiming(3,NoteLine[3]))
+            var noteObj = NoteLine[3].GetComponentInChildren<NoteControlor>().gameObject;
+            //if (CheckNoteTiming(3,noteObj))
+            //{
+            //    Debug.Log("line3 == true");
+            //    SuccessTap(noteObj);
+            //}
+            //else
+            //{
+            //    MissTap(noteObj);
+            //}
+            switch (CheckNoteTiming(3, noteObj))
             {
-                Debug.Log("line3 == true");
-                SuccessTap();
+                case "Parfect":
+                    Debug.Log("line3 == true");
+                    SuccessTap(noteObj);
+                    break;
+                case "Miss":
+                    Debug.Log("miss");
+                    MissTap(noteObj);
+                    break;
+                default:
+                    break;
             }
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
             if (NoteLine[4].transform.childCount == 0) return;
-            if (CheckNoteTiming(4,NoteLine[4]))
+            var noteObj = NoteLine[4].GetComponentInChildren<NoteControlor>().gameObject;
+            //if (CheckNoteTiming(4,noteObj))
+            //{
+            //    Debug.Log("line4 == true");
+            //    SuccessTap(noteObj);
+            //}
+            //else
+            //{
+            //    MissTap(noteObj);
+            //}
+            switch(CheckNoteTiming(4, noteObj))
             {
-                Debug.Log("line4 == true");
-                SuccessTap();
+                case "Parfect":
+                    Debug.Log("line4 == true");
+                    SuccessTap(noteObj);
+                    break;
+                case "Miss":
+                    Debug.Log("miss");
+                    MissTap(noteObj);
+                    break;
+                default:
+                    break;
             }
         }
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -123,32 +212,41 @@ public class GameControlor : MonoBehaviour {
             }
         }
     }
-    void SuccessTap()
+    void SuccessTap(GameObject line)
     {
+        combo++;
+        score += 200;
         _UIManager.ComboCount(combo);
         _UIManager.ScoreUp(score);
-        Destroy(GameObject.Find("Cube(Clone)" + _LineCheckNoteCount));
+        Destroy(line);
         _LineCheckNoteCount++;
     }
-
-
-    bool CheckNoteTiming(int num,GameObject lineObj)
+    void MissTap(GameObject obj)
     {
-        if(lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.5f &&
-           lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.5f && 
-           _lineNum[_LineCheckNoteCount] == num)
+
+        Debug.Log(false);
+        _LineCheckNoteCount++;
+        combo = 0;
+        _UIManager.ComboCount(combo);
+        Destroy(obj);
+    }
+
+    //判定
+    string CheckNoteTiming(int num,GameObject lineObj)
+    {
+        if (lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.4f &&
+           lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.4f)
         {
-            combo++;
-            score += 200;
-            return true;
+            return "Parfect";
         }
-        //if (_timing[_LineCheckNoteCount] + timeOffset < GetMusicTime() + 1 && _timing[_LineCheckNoteCount] + timeOffset < GetMusicTime() - 1 && _lineNum[_LineCheckNoteCount] == num)
-        //{
-        //    combo++;
-        //    score += 3000;
-        //    return true;
-        //}
-        return false;
+        else if (lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() - 0.6f)
+        {
+            return "Miss";
+        }
+        else
+        {
+            return default;
+        }
     }
 
     void ComboCount()
@@ -158,7 +256,7 @@ public class GameControlor : MonoBehaviour {
 
     void SpawnNotes(int num)
     {
-        var obj = Instantiate(notes[num],new Vector3(-4.0f + (2.0f * num), 0f, 0), Quaternion.identity);
+        var obj = Instantiate(notes[num],new Vector3(-4.0f + (2.0f * num), 5f, 0), Quaternion.identity);
         obj.name = "Note"+ _SpawndNotesCount ;
         obj.transform.parent = NoteLine[num].transform;
         obj.GetComponent<NoteControlor>().timing = _timing[_SpawndNotesCount];
@@ -179,7 +277,7 @@ public class GameControlor : MonoBehaviour {
             string[] values = line.Split(',');
             for (int j = 0; j < values.Length; j++)
             {
-                _timing[i] = float.Parse(values[0]) + timing;
+                _timing[i] = float.Parse(values[0]);
                 _lineNum[i] = int.Parse(values[1]);
             }
             i++;
@@ -209,14 +307,13 @@ public class GameControlor : MonoBehaviour {
                 timing = -0.5f;
                 break;
             case 10:
-                timing = -0.4f;
+                timing = -1.2f;
                 break;
         }
     }
 
     float GetMusicTime()
     {
-        Debug.Log(Time.time - _startTime);
         return Time.time - _startTime;
     }
 }

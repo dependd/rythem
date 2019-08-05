@@ -442,7 +442,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d92fb563f41d38c4bb65e36d9ece4044, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 94bd74edd6c23364eb800f7cc0ccd552, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.548
   m_Pitch: 1
@@ -1313,7 +1313,7 @@ MonoBehaviour:
   - {fileID: 5888204205332000251, guid: b4afb3bacf34ff14da5f7d7fd3c30ed5, type: 3}
   - {fileID: 5888204205332000251, guid: b4afb3bacf34ff14da5f7d7fd3c30ed5, type: 3}
   combo: 0
-  filePass: "CSV/\u30A4\u30EA\u30E5\u30FC\u30B8\u30E7\u30CB\u30B9\u30BF\uFF01"
+  filePass: CSV/NothingButYou
   _LineCheckNoteCount: 0
   timeOffset: 0
   startButton: {fileID: 0}

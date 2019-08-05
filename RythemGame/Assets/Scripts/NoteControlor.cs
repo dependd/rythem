@@ -28,10 +28,4 @@ public class NoteControlor : MonoBehaviour {
             Destroy(this.gameObject);
         }
 	}
-    private void OnTriggerEnter(Collider other)
-    {
-    }
-    private void OnTriggerExit(Collider other)
-    {
-    }
 }
