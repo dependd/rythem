@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour {
 
     [SerializeField] Text _comboText;
     [SerializeField] Slider _ScoreSlider;
+    [SerializeField] Text StartText;
 	// Use this for initialization
 	void Start () {
 		
@@ -23,5 +24,9 @@ public class UIManager : MonoBehaviour {
     public void ScoreUp(int score)
     {
         _ScoreSlider.value += score;
+    }
+    public void StartTextChange(string str)
+    {
+        StartText.text = str;
     }
 }

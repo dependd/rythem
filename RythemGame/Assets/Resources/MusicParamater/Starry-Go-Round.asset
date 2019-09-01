@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1e5d635e5cc0047ab3697ab17d7b9d, type: 3}
+  m_Name: Starry-Go-Round
+  m_EditorClassIdentifier: 
+  musicName: Starry-Go-Round
+  difficulity: 070000000f000000
+  jacket: {fileID: 0}
+  music: {fileID: 8300000, guid: fd703ba9c637f07449ae69083558deff, type: 3}

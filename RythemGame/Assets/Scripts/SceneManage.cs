@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneManage : MonoBehaviour {
+public class SceneManage : SingletonMonoBehaviour<SceneManage> {
 
 	// Use this for initialization
 	void Start () {
-        if(GameObject.Find("GameManager") == false)
-        {
-            DontDestroyOnLoad(this.gameObject);
-        }
 
 	}
 	
@@ -20,10 +16,10 @@ public class SceneManage : MonoBehaviour {
 	}
     public void ChangeScene()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Main");
     }
     public void Test()
     {
-        SceneManager.LoadScene("Select");
+
     }
 }

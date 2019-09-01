@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameControlor : MonoBehaviour {
 
     [SerializeField] UIManager _UIManager;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] GameObject audioSource;
     [SerializeField] AudioClip[] clips;
     [SerializeField] GameObject[] NoteLine;
     public int score;
@@ -36,8 +36,8 @@ public class GameControlor : MonoBehaviour {
         _timing = new float[1024];
         _lineNum = new int[1024];
         LoadCSV();
-        StartGame();
         score = 0;
+        StartCoroutine(ReadyGo());
     }
 
     void Update()
@@ -54,7 +54,7 @@ public class GameControlor : MonoBehaviour {
     {
         //startButton.SetActive(false);
         _startTime = Time.time;
-        audioSource.Play();
+        audioSource.GetComponent<AudioManager>().ChangeBGM();
         _isPlaying = true;
     }
 
@@ -265,7 +265,7 @@ public class GameControlor : MonoBehaviour {
     void LoadCSV()
     {
 
-        TextAsset csv = Resources.Load(filePass) as TextAsset;
+        TextAsset csv = Resources.Load(GamePlayManager.instance.passName) as TextAsset;
         Debug.Log(csv.text);
         StringReader reader = new StringReader(csv.text);
 
@@ -315,5 +315,15 @@ public class GameControlor : MonoBehaviour {
     float GetMusicTime()
     {
         return Time.time - _startTime;
+    }
+
+    IEnumerator ReadyGo()
+    {
+        _UIManager.StartTextChange("Ready...");
+        yield return new WaitForSeconds(2);
+        _UIManager.StartTextChange("GO!!");
+        yield return new WaitForSeconds(1);
+        _UIManager.StartTextChange("");
+        StartGame();
     }
 }
