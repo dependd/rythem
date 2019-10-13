@@ -6,6 +6,9 @@ public class GamePlayManager : SingletonMonoBehaviour<GamePlayManager>
 {
     public MusicExpretion param;
     public string passName;
+
+    public int MaxCombo;
+    public int Score;
    
     public void SetPassName(int level)
     {

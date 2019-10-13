@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameControlor : MonoBehaviour {
 
     [SerializeField] UIManager _UIManager;
-    [SerializeField] GameObject audioSource;
+    [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] clips;
     [SerializeField] GameObject[] NoteLine;
     public int score;
@@ -14,6 +15,7 @@ public class GameControlor : MonoBehaviour {
     private float[] _timing;
     private int[] _lineNum;
     public int combo = 0;
+    private int maxcombo = 0;
 
     private int maxCombo;
     public string filePass;
@@ -46,6 +48,10 @@ public class GameControlor : MonoBehaviour {
         {
             CheckNextNotes();
             CheckKey();
+            if (!audioSource.isPlaying)
+            {
+                StartCoroutine(EndGameCoroutine());
+            }
         }
 
     }
@@ -54,8 +60,15 @@ public class GameControlor : MonoBehaviour {
     {
         //startButton.SetActive(false);
         _startTime = Time.time;
-        audioSource.GetComponent<AudioManager>().ChangeBGM();
+        audioSource.gameObject.GetComponent<AudioManager>().ChangeBGM();
         _isPlaying = true;
+    }
+
+    private void EndGame()
+    {
+        GamePlayManager.instance.MaxCombo = maxcombo;
+        GamePlayManager.instance.Score = score;
+        SceneManager.LoadScene("Start");
     }
 
     void CheckNextNotes()
@@ -216,6 +229,10 @@ public class GameControlor : MonoBehaviour {
     {
         combo++;
         score += 200;
+        if(combo >= maxCombo)
+        {
+            maxCombo = combo;
+        }
         _UIManager.ComboCount(combo);
         _UIManager.ScoreUp(score);
         Destroy(line);
@@ -277,7 +294,7 @@ public class GameControlor : MonoBehaviour {
             string[] values = line.Split(',');
             for (int j = 0; j < values.Length; j++)
             {
-                _timing[i] = float.Parse(values[0]);
+                _timing[i] = float.Parse(values[0])+0.2f;
                 _lineNum[i] = int.Parse(values[1]);
             }
             i++;
@@ -325,5 +342,20 @@ public class GameControlor : MonoBehaviour {
         yield return new WaitForSeconds(1);
         _UIManager.StartTextChange("");
         StartGame();
+    }
+
+    IEnumerator EndGameCoroutine()
+    {
+        if (maxcombo != maxCombo)
+        {
+            _UIManager.StartTextChange("End!");
+        }
+        else
+        {
+            _UIManager.StartTextChange("Full Combo!!!");
+        }
+        yield return new WaitForSeconds(2);
+        _UIManager.StartTextChange("");
+        EndGame();
     }
 }

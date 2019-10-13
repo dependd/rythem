@@ -147,7 +147,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 94bd74edd6c23364eb800f7cc0ccd552, type: 3}
   - {fileID: 8300000, guid: 0e8e7c629575ba74a87ae3c6baee45d8, type: 3}
   - {fileID: 8300000, guid: fd703ba9c637f07449ae69083558deff, type: 3}
-  i: 3
+  i: 0
 --- !u!4 &270482262
 Transform:
   m_ObjectHideFlags: 0
@@ -406,6 +406,10 @@ MonoBehaviour:
   startButton: {fileID: 1326153903}
   sg: {fileID: 270482261}
   note: {fileID: 1019190988}
+  start: {fileID: 0}
+  select: {fileID: 0}
+  setting: {fileID: 0}
+  banar: {fileID: 0}
 --- !u!114 &690499236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,7 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca2d9df153143c4a8c7e911654b1b19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: Resources/CSV/Starry-Go-Round
+  fileName: Resources/CSV/Hard/Iryuzyonista
 --- !u!114 &1019190988
 MonoBehaviour:
   m_ObjectHideFlags: 0
