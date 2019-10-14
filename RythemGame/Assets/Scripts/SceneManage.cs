@@ -14,10 +14,23 @@ public class SceneManage : SingletonMonoBehaviour<SceneManage> {
 	void Update () {
 		
 	}
-    public void ChangeScene()
+    public void ChangeMainScene()
     {
         SceneManager.LoadScene("Main");
     }
+    public void ChangeHomeScene()
+    {
+        SceneManager.LoadScene("Home");
+    }
+    public void ChangeStartScene()
+    {
+        SceneManager.LoadScene("Start");
+    }
+    public void ChangeResultScene()
+    {
+        SceneManager.LoadScene("Result");
+    }
+
     public void Test()
     {
 

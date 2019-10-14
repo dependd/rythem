@@ -45,7 +45,7 @@ public class SelectScene : MonoBehaviour
             {
                 GamePlayManager.instance.param = hit.collider.gameObject.GetComponent<Banar>().parameter;
                 GamePlayManager.instance.SetPassName((int)level);
-                button.Setting();
+                button.NextScene();
 
             }
 

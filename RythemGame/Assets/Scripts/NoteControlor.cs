@@ -18,14 +18,20 @@ public class NoteControlor : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.position += Vector3.down * hs * Time.deltaTime;
-        
-        if(transform.position.y <= -5.0f)
+
+        if (timing <= controlor.GetMusicTime())
         {
-            Debug.Log(false);
-            controlor._LineCheckNoteCount++;
-            controlor.combo = 0;
-            _UIManager.ComboCount(controlor.combo);
             Destroy(this.gameObject);
         }
 	}
+
+    private void OnBecameInvisible()
+    {
+        Debug.Log(false);
+        controlor._LineCheckNoteCount++;
+        controlor.combo = 0;
+        _UIManager.ComboCount(controlor.combo);
+        _UIManager.Hantei("Miss");
+        Destroy(this.gameObject);
+    }
 }

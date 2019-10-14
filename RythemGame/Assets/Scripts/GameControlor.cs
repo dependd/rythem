@@ -68,7 +68,7 @@ public class GameControlor : MonoBehaviour {
     {
         GamePlayManager.instance.MaxCombo = maxcombo;
         GamePlayManager.instance.Score = score;
-        SceneManager.LoadScene("Start");
+        SceneManage.instance.ChangeResultScene();
     }
 
     void CheckNextNotes()
@@ -97,8 +97,20 @@ public class GameControlor : MonoBehaviour {
             switch (CheckNoteTiming(0, noteObj))
             {
                 case "Parfect":
-                    Debug.Log("line0 == true");
-                    SuccessTap(noteObj);
+                    Debug.Log("line0 == Parfect");
+                    SuccessTap(noteObj, 2000, false);
+                    break;
+                case "Great":
+                    Debug.Log("line0 == Great");
+                    SuccessTap(noteObj, 1000, false);
+                    break;
+                case "Nice":
+                    Debug.Log("line0 == Nice");
+                    SuccessTap(noteObj, 500, true);
+                    break;
+                case "Bad":
+                    Debug.Log("line0 == Bad");
+                    SuccessTap(noteObj, 200, true);
                     break;
                 case "Miss":
                     Debug.Log("miss");
@@ -125,8 +137,20 @@ public class GameControlor : MonoBehaviour {
             switch (CheckNoteTiming(1, noteObj))
             {
                 case "Parfect":
-                    Debug.Log("line1 == true");
-                    SuccessTap(noteObj);
+                    Debug.Log("line0 == Parfect");
+                    SuccessTap(noteObj, 2000, false);
+                    break;
+                case "Great":
+                    Debug.Log("line0 == Great");
+                    SuccessTap(noteObj, 1000, false);
+                    break;
+                case "Nice":
+                    Debug.Log("line0 == Nice");
+                    SuccessTap(noteObj, 500, true);
+                    break;
+                case "Bad":
+                    Debug.Log("line0 == Bad");
+                    SuccessTap(noteObj, 200, true);
                     break;
                 case "Miss":
                     Debug.Log("miss");
@@ -152,8 +176,20 @@ public class GameControlor : MonoBehaviour {
             switch (CheckNoteTiming(2, noteObj))
             {
                 case "Parfect":
-                    Debug.Log("line2 == true");
-                    SuccessTap(noteObj);
+                    Debug.Log("line0 == Parfect");
+                    SuccessTap(noteObj, 2000, false);
+                    break;
+                case "Great":
+                    Debug.Log("line0 == Great");
+                    SuccessTap(noteObj, 1000, false);
+                    break;
+                case "Nice":
+                    Debug.Log("line0 == Nice");
+                    SuccessTap(noteObj, 500, true);
+                    break;
+                case "Bad":
+                    Debug.Log("line0 == Bad");
+                    SuccessTap(noteObj, 200, true);
                     break;
                 case "Miss":
                     Debug.Log("miss");
@@ -180,8 +216,20 @@ public class GameControlor : MonoBehaviour {
             switch (CheckNoteTiming(3, noteObj))
             {
                 case "Parfect":
-                    Debug.Log("line3 == true");
-                    SuccessTap(noteObj);
+                    Debug.Log("line0 == Parfect");
+                    SuccessTap(noteObj, 2000, false);
+                    break;
+                case "Great":
+                    Debug.Log("line0 == Great");
+                    SuccessTap(noteObj, 1000, false);
+                    break;
+                case "Nice":
+                    Debug.Log("line0 == Nice");
+                    SuccessTap(noteObj, 500, true);
+                    break;
+                case "Bad":
+                    Debug.Log("line0 == Bad");
+                    SuccessTap(noteObj, 200, true);
                     break;
                 case "Miss":
                     Debug.Log("miss");
@@ -207,8 +255,20 @@ public class GameControlor : MonoBehaviour {
             switch(CheckNoteTiming(4, noteObj))
             {
                 case "Parfect":
-                    Debug.Log("line4 == true");
-                    SuccessTap(noteObj);
+                    Debug.Log("line0 == Parfect");
+                    SuccessTap(noteObj, 2000, false);
+                    break;
+                case "Great":
+                    Debug.Log("line0 == Great");
+                    SuccessTap(noteObj, 1000, false);
+                    break;
+                case "Nice":
+                    Debug.Log("line0 == Nice");
+                    SuccessTap(noteObj, 500, true);
+                    break;
+                case "Bad":
+                    Debug.Log("line0 == Bad");
+                    SuccessTap(noteObj, 200, true);
                     break;
                 case "Miss":
                     Debug.Log("miss");
@@ -225,14 +285,27 @@ public class GameControlor : MonoBehaviour {
             }
         }
     }
-    void SuccessTap(GameObject line)
+    void SuccessTap(GameObject line,int Upper,bool cut)
     {
-        combo++;
-        score += 200;
-        if(combo >= maxCombo)
-        {
-            maxCombo = combo;
+        if (cut) {
+            combo = 0;
         }
+        else
+        {
+            combo++;
+            if (combo >= maxcombo)
+            {
+                maxcombo = combo;
+            }
+        }
+        switch (Upper)
+        {
+            case 2000:_UIManager.Hantei("Parfect"); break;
+            case 1000: _UIManager.Hantei("Great"); break;
+            case 500: _UIManager.Hantei("Nice"); break;
+            case 200: _UIManager.Hantei("Bad"); break;
+        }
+        score += Upper;
         _UIManager.ComboCount(combo);
         _UIManager.ScoreUp(score);
         Destroy(line);
@@ -240,7 +313,7 @@ public class GameControlor : MonoBehaviour {
     }
     void MissTap(GameObject obj)
     {
-
+        _UIManager.Hantei("Miss");
         Debug.Log(false);
         _LineCheckNoteCount++;
         combo = 0;
@@ -251,10 +324,25 @@ public class GameControlor : MonoBehaviour {
     //判定
     string CheckNoteTiming(int num,GameObject lineObj)
     {
-        if (lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.4f &&
-           lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.4f)
+        if (lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.2f &&
+              lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.2f)
         {
             return "Parfect";
+        }
+        else if (lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.3f &&
+           lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.3f)
+        {
+            return "Great";
+        }
+        else if(lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.4f &&
+             lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.4f)
+        {
+            return "Nice";
+        }
+        else if (lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.5f &&
+           lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.5f)
+        {
+            return "Bad";
         }
         else if (lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() - 0.6f)
         {
@@ -294,12 +382,13 @@ public class GameControlor : MonoBehaviour {
             string[] values = line.Split(',');
             for (int j = 0; j < values.Length; j++)
             {
-                _timing[i] = float.Parse(values[0])+0.2f;
+                _timing[i] = float.Parse(values[0]);
                 _lineNum[i] = int.Parse(values[1]);
             }
             i++;
         }
         maxCombo = i;
+        Debug.Log("最大" +maxCombo+ "コンボ");
     }
 
     private void InstanceTiming(int hs)
@@ -315,21 +404,21 @@ public class GameControlor : MonoBehaviour {
                 timing = -1.05f;
                 break;
             case 7:
-                timing = -0.8f;
+                timing = -1.3f;
                 break;
             case 8:
-                timing = -0.65f;
+                timing = -1.15f;
                 break;
             case 9:
-                timing = -0.5f;
+                timing = -1.05f;
                 break;
             case 10:
-                timing = -1.2f;
+                timing = -0.92f;
                 break;
         }
     }
 
-    float GetMusicTime()
+   public  float GetMusicTime()
     {
         return Time.time - _startTime;
     }

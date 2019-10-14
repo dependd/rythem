@@ -7,6 +7,6 @@ public class StartScene : MonoBehaviour
 {
     public void ButtonFunctions()
     {
-        SceneManager.LoadScene("Home");
+        SceneManage.instance.ChangeHomeScene();
     }
 }

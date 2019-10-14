@@ -48,19 +48,16 @@ public class ButtonScripts : MonoBehaviour
     }
     public void GameStart()
     {
-        SceneManage.instance.ChangeScene();
+        SceneManage.instance.ChangeMainScene();
     }
-    public void Test()
+    public void HomeScene()
     {
-        SceneManage.instance.Test();
+        scene = Scene.Title;
     }
     //スタートボタンから楽曲選択へ移行する関数
-    public void StartButton()
+    public void SelectScene()
     {
         scene = Scene.Select;
-        //スタートのUIを非表示、セレクトのUIを表示
-        start.SetActive(false);
-        select.SetActive(true);
 
         var selectScript = select.GetComponent<SelectScene>();
 
@@ -79,10 +76,38 @@ public class ButtonScripts : MonoBehaviour
         }
     }
 
-    public void Setting()
+    public void SettingScene()
     {
-        select.SetActive(false);
-        setting.SetActive(true);
+        scene = Scene.Setting;
+        foreach (Transform obj in select.transform){
+            Destroy(obj.gameObject);
+        }
+    }
+
+    public void NextScene()
+    {
+        switch (scene)
+        {
+            case Scene.Title:
+                start.SetActive(false);
+                select.SetActive(true);
+                SelectScene();
+                break;
+            case Scene.Select:
+                select.SetActive(false);
+                setting.SetActive(true);
+                SettingScene();
+                break;
+            case Scene.Setting:
+                foreach (Transform obj in select.transform)
+                {
+                    Destroy(obj.gameObject);
+                }
+                select.SetActive(true);
+                setting.SetActive(false);SelectScene();
+                SceneManage.instance.ChangeMainScene();
+                break;
+        }
     }
 
     public void BackScene()
@@ -104,8 +129,9 @@ public class ButtonScripts : MonoBehaviour
                 }
                 setting.SetActive(false);
                 select.SetActive(true);
+                
                 break;
-            case Scene.Title:
+            case Scene.Title:                
                 //ゲーム終了確認
                 break;
         }
