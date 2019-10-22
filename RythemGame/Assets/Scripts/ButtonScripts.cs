@@ -23,6 +23,7 @@ public class ButtonScripts : MonoBehaviour
     //各シーンのUIの親オブジェクト
     [SerializeField] GameObject start;
     [SerializeField] GameObject select;
+    ScroolBanar scroolBanar;
     [SerializeField] GameObject setting;
     //選択シーンのバナーのプレハブ
     [SerializeField] GameObject banar;
@@ -30,6 +31,7 @@ public class ButtonScripts : MonoBehaviour
     void Start()
     {
         scene = Scene.Title;
+        scroolBanar = select.GetComponent<ScroolBanar>();
     }
 
     // Update is called once per frame
@@ -60,8 +62,7 @@ public class ButtonScripts : MonoBehaviour
         scene = Scene.Select;
 
         var selectScript = select.GetComponent<SelectScene>();
-
-        List<GameObject> banars = new List<GameObject>();
+        
         //バナーを配置するpositionのY軸を設定する
         float PlusNum = (Screen.height - 200) / selectScript.expretions.Length;
         float posY = PlusNum;
@@ -71,7 +72,7 @@ public class ButtonScripts : MonoBehaviour
             Debug.Log(posY);
             //楽曲ごとのバナーをinstance
             //バナーの数をlistで取得しておく
-            banars.Add(Instantiate(banar, new Vector3(transform.position.x, posY, transform.position.z), Quaternion.identity, select.transform));
+            scroolBanar.banars.Add(Instantiate(banar, new Vector3(transform.position.x, posY, transform.position.z), Quaternion.identity, select.transform));
             posY += PlusNum;
         }
     }
