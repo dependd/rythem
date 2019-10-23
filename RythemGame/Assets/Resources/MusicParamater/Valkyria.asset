@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e1e5d635e5cc0047ab3697ab17d7b9d, type: 3}
-  m_Name: Starry-Go-Round
+  m_Name: Valkyria
   m_EditorClassIdentifier: 
-  musicName: Starry-Go-Round
-  difficulity: 070000000f000000
+  musicName: Valkyria
+  difficulity: 
   jacket: {fileID: 0}
-  music: {fileID: 8300000, guid: fd703ba9c637f07449ae69083558deff, type: 3}
+  music: {fileID: 8300000, guid: 6ddf3c1b4926cd54db2de398e51acef4, type: 3}

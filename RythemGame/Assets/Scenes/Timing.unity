@@ -146,8 +146,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d92fb563f41d38c4bb65e36d9ece4044, type: 3}
   - {fileID: 8300000, guid: 94bd74edd6c23364eb800f7cc0ccd552, type: 3}
   - {fileID: 8300000, guid: 0e8e7c629575ba74a87ae3c6baee45d8, type: 3}
-  - {fileID: 8300000, guid: fd703ba9c637f07449ae69083558deff, type: 3}
-  i: 0
+  - {fileID: 8300000, guid: ebf40ca21d804e34c83a2dc6fdf94119, type: 3}
+  - {fileID: 8300000, guid: 5b8e0b56d2825cd49b24dd1726cf3f25, type: 3}
+  - {fileID: 8300000, guid: 5248ae5b8ff0386438a3334c443d50fd, type: 3}
+  - {fileID: 8300000, guid: e31b8fac2ec9a70448c29885ad5095f1, type: 3}
+  - {fileID: 8300000, guid: 9bdd846c3812f1a478a2358bc16e5a25, type: 3}
+  - {fileID: 8300000, guid: 3609a300524bea74ab33e33633bdc364, type: 3}
+  - {fileID: 8300000, guid: df9910e81d12ee749b4d26c101b78c8c, type: 3}
+  - {fileID: 8300000, guid: 50a5800b23443e64fb9597d6dc80a7da, type: 3}
+  - {fileID: 8300000, guid: c13ddb0b2ee018c4aa3781a975f9444c, type: 3}
+  - {fileID: 8300000, guid: 6ddf3c1b4926cd54db2de398e51acef4, type: 3}
+  i: 12
 --- !u!4 &270482262
 Transform:
   m_ObjectHideFlags: 0
@@ -600,7 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca2d9df153143c4a8c7e911654b1b19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: Resources/CSV/Hard/Iryuzyonista
+  fileName: Resources/CSV/Hard/Valkyria
 --- !u!114 &1019190988
 MonoBehaviour:
   m_ObjectHideFlags: 0
