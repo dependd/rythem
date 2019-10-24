@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1e5d635e5cc0047ab3697ab17d7b9d, type: 3}
   m_Name: LoveDestiny
   m_EditorClassIdentifier: 
-  musicName: 
-  difficulity: 
+  musicName: "Love\u221EDestiny"
+  PassName: LoveDestiny
+  difficulity: 0500000011000000
   jacket: {fileID: 0}
   music: {fileID: 8300000, guid: e31b8fac2ec9a70448c29885ad5095f1, type: 3}

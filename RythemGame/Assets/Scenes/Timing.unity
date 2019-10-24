@@ -156,7 +156,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 50a5800b23443e64fb9597d6dc80a7da, type: 3}
   - {fileID: 8300000, guid: c13ddb0b2ee018c4aa3781a975f9444c, type: 3}
   - {fileID: 8300000, guid: 6ddf3c1b4926cd54db2de398e51acef4, type: 3}
-  i: 12
+  i: 11
 --- !u!4 &270482262
 Transform:
   m_ObjectHideFlags: 0
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca2d9df153143c4a8c7e911654b1b19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: Resources/CSV/Hard/Valkyria
+  fileName: Resources/CSV/Hard/FanFanFare
 --- !u!114 &1019190988
 MonoBehaviour:
   m_ObjectHideFlags: 0

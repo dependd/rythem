@@ -64,17 +64,19 @@ public class ButtonScripts : MonoBehaviour
         var selectScript = select.GetComponent<SelectScene>();
         
         //バナーを配置するpositionのY軸を設定する
-        float PlusNum = (Screen.height - 200) / selectScript.expretions.Length;
-        float posY = PlusNum;
+        float PlusNum = (Screen.height - 250) / 4;
+        float posY = Screen.height / 2;
         //楽曲数分回す
-        for (int i = 0; i < selectScript.expretions.Length; i++)
+        for (int i = 0; i < 7; i++)
         {
             Debug.Log(posY);
             //楽曲ごとのバナーをinstance
             //バナーの数をlistで取得しておく
             scroolBanar.banars.Add(Instantiate(banar, new Vector3(transform.position.x, posY, transform.position.z), Quaternion.identity, select.transform));
             posY += PlusNum;
+            if (i == 3) posY = posY * -1 + Screen.height + 298 / 4;
         }
+        posY *= -1;
     }
 
     public void SettingScene()

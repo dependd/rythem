@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1e5d635e5cc0047ab3697ab17d7b9d, type: 3}
   m_Name: FanFanFare
   m_EditorClassIdentifier: 
-  musicName: FanFanFare
-  difficulity: 
+  musicName: "\u60C5\u71B1\u30D5\u30A1\u30F3\u30D5\u30A1\u30F3\u30D5\u30A1\u30FC\u30EC"
+  PassName: FanFanFare
+  difficulity: 0400000010000000
   jacket: {fileID: 0}
   music: {fileID: 8300000, guid: c13ddb0b2ee018c4aa3781a975f9444c, type: 3}

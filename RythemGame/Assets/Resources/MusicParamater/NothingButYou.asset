@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: NothingButYou
   m_EditorClassIdentifier: 
   musicName: NothingButYou
+  PassName: NothingButYou
   difficulity: 060000000c000000
   jacket: {fileID: 0}
   music: {fileID: 8300000, guid: 94bd74edd6c23364eb800f7cc0ccd552, type: 3}

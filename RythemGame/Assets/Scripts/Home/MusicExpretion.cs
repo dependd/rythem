@@ -9,6 +9,11 @@ public class MusicExpretion : ScriptableObject
     [Header("楽曲名")]
     public string musicName;
 
+
+    [SerializeField]
+    [Header("ファイルパスネーム")]
+    public string PassName;
+
     [SerializeField]
     [Header("難易度")]
     public int[] difficulity;

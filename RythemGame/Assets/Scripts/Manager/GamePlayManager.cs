@@ -14,10 +14,10 @@ public class GamePlayManager : SingletonMonoBehaviour<GamePlayManager>
     {
         if (level == 0)
         {
-            passName = "CSV/Easy/" + param.musicName;
+            passName = "CSV/Easy/" + param.PassName;
         }else if(level == 1)
         {
-            passName = "CSV/Hard/" + param.musicName;
+            passName = "CSV/Hard/" + param.PassName;
         }
     }
 }

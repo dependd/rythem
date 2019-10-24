@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1e5d635e5cc0047ab3697ab17d7b9d, type: 3}
   m_Name: LittleRidlle
   m_EditorClassIdentifier: 
-  musicName: LittleRidlle
-  difficulity: 
+  musicName: "\u30EA\u30C8\u30EB\u30EA\u30C9\u30EB"
+  PassName: LittleRidlle
+  difficulity: 0200000013000000
   jacket: {fileID: 0}
   music: {fileID: 8300000, guid: 50a5800b23443e64fb9597d6dc80a7da, type: 3}

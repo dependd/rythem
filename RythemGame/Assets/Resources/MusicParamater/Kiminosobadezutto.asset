@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1e5d635e5cc0047ab3697ab17d7b9d, type: 3}
   m_Name: Kiminosobadezutto
   m_EditorClassIdentifier: 
-  musicName: Kiminosobadezutto
-  difficulity: 
+  musicName: "\u30AD\u30DF\u306E\u305D\u3070\u3067\u305A\u3063\u3068"
+  PassName: Kiminosobadezutto
+  difficulity: 050000000a000000
   jacket: {fileID: 0}
   music: {fileID: 8300000, guid: 3609a300524bea74ab33e33633bdc364, type: 3}

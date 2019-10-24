@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BeyondTheStarlight
   m_EditorClassIdentifier: 
   musicName: BeyondTheStarlight
+  PassName: BeyondTheStarlight
   difficulity: 070000000e000000
   jacket: {fileID: 0}
   music: {fileID: 8300000, guid: 5248ae5b8ff0386438a3334c443d50fd, type: 3}

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1e5d635e5cc0047ab3697ab17d7b9d, type: 3}
   m_Name: Valkyria
   m_EditorClassIdentifier: 
-  musicName: Valkyria
-  difficulity: 
+  musicName: "\u751F\u5B58\u672C\u80FD\u30F4\u30A1\u30EB\u30AD\u30E5\u30EA\u30A2"
+  PassName: Valkyria
+  difficulity: 0500000012000000
   jacket: {fileID: 0}
   music: {fileID: 8300000, guid: 6ddf3c1b4926cd54db2de398e51acef4, type: 3}

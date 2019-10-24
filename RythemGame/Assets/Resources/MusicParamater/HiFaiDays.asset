@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1e5d635e5cc0047ab3697ab17d7b9d, type: 3}
   m_Name: HiFaiDays
   m_EditorClassIdentifier: 
-  musicName: HiFaiDays
-  difficulity: 
+  musicName: "\u30CF\u30A4\u30D5\u30A1\u30A4\u2606\u30C7\u30A4\u30BA"
+  PassName: HiFaiDays
+  difficulity: 0600000013000000
   jacket: {fileID: 0}
   music: {fileID: 8300000, guid: df9910e81d12ee749b4d26c101b78c8c, type: 3}

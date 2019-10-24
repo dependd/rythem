@@ -18,7 +18,7 @@ public class Banar : MonoBehaviour
     {
         parameter = param;
         level.text = "Level : " + parameter.difficulity[1].ToString();
-        name.text = parameter.name;
+        name.text = parameter.musicName;
     }
 
     public void SetLevel(int num)
