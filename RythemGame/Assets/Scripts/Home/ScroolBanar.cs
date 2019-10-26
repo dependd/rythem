@@ -63,7 +63,7 @@ public class ScroolBanar : MonoBehaviour
             {
                 Debug.Log(banars[i].name +" : up");
                 banars[i].transform.position = new Vector3(transform.position.x, -changePosition + 1 + Screen.height - 75, 0);
-            } else if (banars[i].transform.position.y <= -changePosition)
+            } else if (banars[i].transform.position.y <= -changePosition + Screen.height - 75)
             {
                 Debug.Log(banars[i].name + " : down");
                 banars[i].transform.position = new Vector3(transform.position.x, changePosition - 1, 0);
@@ -84,7 +84,7 @@ public class ScroolBanar : MonoBehaviour
                     Debug.Log(banars[i].name + " : up");
                     banars[i].transform.position = new Vector3(transform.position.x, -changePosition + 1 + Screen.height - 75, 0);
                 }
-                else if (banars[i].transform.position.y <= -changePosition)
+                else if (banars[i].transform.position.y <= -changePosition + Screen.height - 75)
                 {
                     Debug.Log(banars[i].name + " : down");
                     banars[i].transform.position = new Vector3(transform.position.x, changePosition - 1, 0);
