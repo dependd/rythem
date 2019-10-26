@@ -25,4 +25,6 @@ public class Banar : MonoBehaviour
     {
         level.text = "Level : " + parameter.difficulity[num].ToString();
     }
+
+   
 }

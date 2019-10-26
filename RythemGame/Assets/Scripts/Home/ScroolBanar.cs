@@ -5,10 +5,12 @@ using UnityEngine;
 public class ScroolBanar : MonoBehaviour
 {
     public List<GameObject> banars = new List<GameObject>();
-
-    Vector2 points;
-    Vector2 endPoint;
+    
+    Vector2 points;//最初にタップした場所
+    Vector2 endPoint;//次のフレームでタップした場所
     float dis;
+
+    public float changePosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,7 @@ public class ScroolBanar : MonoBehaviour
 
     private void Update()
     {
+        //弾く動作を取得するスクリプト
         if (Input.GetMouseButtonDown(0))
         {
             points = Input.mousePosition;
@@ -50,15 +53,24 @@ public class ScroolBanar : MonoBehaviour
         }
 
     }
-    
+    //タップしながら動かしたとき
     void MoveBanar(int plus,float speed)
     {
         for (int i = 0;i < banars.Count;i++)
         {
             banars[i].transform.position += new Vector3(0, speed,0) * plus;
+            if (banars[i].transform.position.y >= changePosition)
+            {
+                Debug.Log(banars[i].name +" : up");
+                banars[i].transform.position = new Vector3(transform.position.x, -changePosition + 1 + Screen.height - 75, 0);
+            } else if (banars[i].transform.position.y <= -changePosition)
+            {
+                Debug.Log(banars[i].name + " : down");
+                banars[i].transform.position = new Vector3(transform.position.x, changePosition - 1, 0);
+            }
         }
     }
-    
+    //弾いたとき
     IEnumerator SnapBanar(int plus,float speed)
     {
         float move = speed;
@@ -67,9 +79,20 @@ public class ScroolBanar : MonoBehaviour
             for (int i = 0; i < banars.Count; i++)
             {
                 banars[i].transform.position += new Vector3(0, move, 0) * plus;
+                if (banars[i].transform.position.y >= changePosition)
+                {
+                    Debug.Log(banars[i].name + " : up");
+                    banars[i].transform.position = new Vector3(transform.position.x, -changePosition + 1 + Screen.height - 75, 0);
+                }
+                else if (banars[i].transform.position.y <= -changePosition)
+                {
+                    Debug.Log(banars[i].name + " : down");
+                    banars[i].transform.position = new Vector3(transform.position.x, changePosition - 1, 0);
+                }
             }
             move -= 0.5f;
             yield return null;
         }
     }
+    
 }

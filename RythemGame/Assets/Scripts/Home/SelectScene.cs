@@ -15,11 +15,36 @@ public class SelectScene : MonoBehaviour
     //真ん中で選択されてる楽曲
     GameObject selected;
 
+    [SerializeField] GameObject banar;
+
     [SerializeField]ButtonScripts button;
 
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    public void SetInfo()
+    {
+        var scroolScript = GetComponent<ScroolBanar>();
+        //バナーを配置するpositionのY軸を設定する
+        float PlusNum = 75;
+        float posY = Screen.height / 2;
+        //楽曲数分回す
+        for (int i = 0; i < expretions.Length; i++)
+        {
+            Debug.Log(posY);
+            //楽曲ごとのバナーをinstance
+            //バナーの数をlistで取得しておく
+            scroolScript.banars.Add(Instantiate(banar, new Vector3(transform.position.x, posY, transform.position.z), Quaternion.identity, this.gameObject.transform));
+            posY += PlusNum;
+            if (i == expretions.Length / 2)
+            {
+                scroolScript.changePosition = scroolScript.banars[i].transform.position.y;
+                posY = -posY + Screen.height + PlusNum;
+            }
+        }
         int count = 0;
         foreach (Transform child in transform)
         {
