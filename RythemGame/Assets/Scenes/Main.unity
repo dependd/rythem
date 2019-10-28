@@ -1492,4 +1492,5 @@ MonoBehaviour:
   _LineCheckNoteCount: 0
   timeOffset: 0
   startButton: {fileID: 0}
-  highSpeed: 10
+  highSpeed: 3
+  hanteis: 0000000000000000000000000000000000000000

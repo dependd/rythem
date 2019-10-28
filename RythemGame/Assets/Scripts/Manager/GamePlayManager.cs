@@ -11,6 +11,7 @@ public class GamePlayManager : SingletonMonoBehaviour<GamePlayManager>
     public int Score;
 
     public int[] hantei;
+    public int HS;
    
     public void SetPassName(int level)
     {

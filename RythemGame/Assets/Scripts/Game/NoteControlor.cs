@@ -13,17 +13,18 @@ public class NoteControlor : MonoBehaviour {
         controlor = GameObject.Find("GameController").GetComponent<GameControlor>();
         _UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
         hs = controlor.highSpeed;
+        Debug.Log((5f + (float)(hs / 2f)));
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position += Vector3.down * hs * Time.deltaTime;
+        transform.position += Vector3.down * (5f + (float)(hs / 2f)) * Time.deltaTime;
 
         //if (timing <= controlor.GetMusicTime())
         //{
         //    Destroy(this.gameObject);
         //}
-        if(transform.position.y <= -5)
+        if (transform.position.y <= -5)
         {
             Miss();
         }

@@ -37,6 +37,7 @@ public class GameControlor : MonoBehaviour {
 
     void Start()
     {
+        highSpeed = GamePlayManager.instance.HS;
         InstanceTiming(highSpeed);
         _timing = new float[1024];
         _lineNum = new int[1024];
@@ -396,20 +397,32 @@ public class GameControlor : MonoBehaviour {
         //hs5 = timing-1.5f
         switch (hs)
         {
+            case 1:
+                timing = -1.8f;
+                break;
+            case 2:
+                timing = -1.50f;
+                break;
+            case 3:
+                timing = -1.38f;
+                break;
+            case 4:
+                timing = -1.28f;
+                break;
             case 5:
-                timing = -1.5f;
+                timing = -1.2f;
                 break;
             case 6:
-                timing = -1.05f;
+                timing = -1.13f;
                 break;
             case 7:
-                timing = -1.3f;
+                timing = -1.07f;
                 break;
             case 8:
-                timing = -1.15f;
+                timing = -1f;
                 break;
             case 9:
-                timing = -1.05f;
+                timing = -0.95f;
                 break;
             case 10:
                 timing = -0.92f;
