@@ -22,7 +22,6 @@ public class SelectScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     public void SetInfo()
@@ -52,6 +51,7 @@ public class SelectScene : MonoBehaviour
             {
                 //バナーに情報を入れる関数を呼ぶ
                 child.GetComponent<Banar>().SetInfo(expretions[count]);
+                child.name = expretions[count].name;
                 count++;
             }
         }
@@ -68,10 +68,9 @@ public class SelectScene : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction);
             if (hit.collider)
             {
-                GamePlayManager.instance.param = hit.collider.gameObject.GetComponent<Banar>().parameter;
+                GamePlayManager.instance.param = GetComponent<ScroolBanar>().centerBanar.GetComponent<Banar>().parameter;
                 GamePlayManager.instance.SetPassName((int)level);
                 button.NextScene();
-
             }
 
         }

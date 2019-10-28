@@ -32,6 +32,9 @@ public class GameControlor : MonoBehaviour {
     float timing;
     public int highSpeed;
 
+    //判定の数を入れる配列
+    [HideInInspector]public int[] hanteis = new int[5];
+
     void Start()
     {
         InstanceTiming(highSpeed);
@@ -300,10 +303,10 @@ public class GameControlor : MonoBehaviour {
         }
         switch (Upper)
         {
-            case 2000:_UIManager.Hantei("Parfect"); break;
-            case 1000: _UIManager.Hantei("Great"); break;
-            case 500: _UIManager.Hantei("Nice"); break;
-            case 200: _UIManager.Hantei("Bad"); break;
+            case 2000:_UIManager.Hantei("Parfect");hanteis[0]++; break;
+            case 1000: _UIManager.Hantei("Great"); hanteis[1]++; break;
+            case 500: _UIManager.Hantei("Nice"); hanteis[2]++; break;
+            case 200: _UIManager.Hantei("Bad"); hanteis[3]++; break;
         }
         score += Upper;
         _UIManager.ComboCount(combo);
@@ -324,29 +327,25 @@ public class GameControlor : MonoBehaviour {
     //判定
     string CheckNoteTiming(int num,GameObject lineObj)
     {
-        if (lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.2f &&
-              lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.2f)
+        if (lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.05f &&
+              lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.05f)
         {
             return "Parfect";
         }
-        else if (lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.3f &&
-           lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.3f)
+        else if (lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.08f &&
+           lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.08f)
         {
             return "Great";
         }
-        else if(lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.4f &&
-             lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.4f)
+        else if(lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.13f &&
+             lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.13f)
         {
             return "Nice";
         }
-        else if (lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.5f &&
-           lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.5f)
+        else if (lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() + 0.2f &&
+           lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset > GetMusicTime() - 0.2f)
         {
             return "Bad";
-        }
-        else if (lineObj.GetComponentInChildren<NoteControlor>().timing + timeOffset < GetMusicTime() - 0.6f)
-        {
-            return "Miss";
         }
         else
         {
@@ -445,6 +444,7 @@ public class GameControlor : MonoBehaviour {
         }
         yield return new WaitForSeconds(2);
         _UIManager.StartTextChange("");
+        GamePlayManager.instance.hantei = hanteis;
         EndGame();
     }
 }

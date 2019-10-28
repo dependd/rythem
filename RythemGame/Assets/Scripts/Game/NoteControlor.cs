@@ -19,17 +19,22 @@ public class NoteControlor : MonoBehaviour {
 	void Update () {
         transform.position += Vector3.down * hs * Time.deltaTime;
 
-        if (timing <= controlor.GetMusicTime())
+        //if (timing <= controlor.GetMusicTime())
+        //{
+        //    Destroy(this.gameObject);
+        //}
+        if(transform.position.y <= -5)
         {
-            Destroy(this.gameObject);
+            Miss();
         }
 	}
 
-    private void OnBecameInvisible()
+    private void Miss()
     {
         Debug.Log(false);
         controlor._LineCheckNoteCount++;
         controlor.combo = 0;
+        controlor.hanteis[4]++;
         _UIManager.ComboCount(controlor.combo);
         _UIManager.Hantei("Miss");
         Destroy(this.gameObject);

@@ -19,6 +19,12 @@ public class Result : MonoBehaviour
         //ジャケット
         score.text = GamePlayManager.instance.Score.ToString();
         combo.text = GamePlayManager.instance.MaxCombo.ToString();
+        int count= 0;
+        foreach (Transform hantei in exe.transform)
+        {
+            hantei.gameObject.GetComponent<Text>().text = GamePlayManager.instance.hantei[count].ToString();
+            count++;
+        }
     }
 
     // Update is called once per frame
@@ -31,4 +37,5 @@ public class Result : MonoBehaviour
     {
         SceneManage.instance.ChangeHomeScene();
     }
+    
 }

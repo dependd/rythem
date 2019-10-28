@@ -9,6 +9,8 @@ public class GamePlayManager : SingletonMonoBehaviour<GamePlayManager>
 
     public int MaxCombo;
     public int Score;
+
+    public int[] hantei;
    
     public void SetPassName(int level)
     {

@@ -12,7 +12,7 @@ public class ButtonScripts : MonoBehaviour
         Select,
         Setting
     }
-    private Scene scene;
+    [SerializeField]private Scene scene;
 
 
     //タイミング作成用変数
@@ -88,12 +88,6 @@ public class ButtonScripts : MonoBehaviour
                 SettingScene();
                 break;
             case Scene.Setting:
-                foreach (Transform obj in select.transform)
-                {
-                    Destroy(obj.gameObject);
-                }
-                select.SetActive(true);
-                setting.SetActive(false);SelectScene();
                 SceneManage.instance.ChangeMainScene();
                 break;
         }
