@@ -9,13 +9,15 @@ public class ScroolBanar : MonoBehaviour
     Vector2 points;//最初にタップした場所
     Vector2 endPoint;//次のフレームでタップした場所
     float dis;
-
+    //スクロールしたときにバナーが移動する上限
     public float changePosition;
+    //真ん中で選択されてる楽曲
     public GameObject centerBanar;
     // Start is called before the first frame update
     void Start()
     {
         centerBanar = banars[0];
+        GetComponent<SelectScene>().SetJacket(centerBanar);
         centerBanar.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
     }
     
@@ -115,6 +117,7 @@ public class ScroolBanar : MonoBehaviour
             {
                 dis = (Mathf.Abs(Screen.height - Mathf.Abs(banars[i].transform.position.y) - Screen.height / 2));
                 centerBanar = banars[i];
+                GetComponent<SelectScene>().SetJacket(centerBanar);
             }
         }
         Debug.Log(centerBanar.name);

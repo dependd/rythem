@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectScene : MonoBehaviour
 {
@@ -12,16 +13,34 @@ public class SelectScene : MonoBehaviour
     public Level level;
     //楽曲の情報のscriptableObjectを入れる配列
     public MusicExpretion[] expretions;
-    //真ん中で選択されてる楽曲
-    GameObject selected;
-
+    //バナーのプレハブ
     [SerializeField] GameObject banar;
+    //ジャケットを表示するimage
+    [SerializeField] Image jacketImage;
 
     [SerializeField]ButtonScripts button;
 
     // Start is called before the first frame update
     void Start()
     {
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            //マウスポジションからrayを飛ばして楽曲選択
+            Vector2 pos = Camera.main.WorldToScreenPoint(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(pos);
+            RaycastHit2D hit = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction);
+            if (hit.collider)
+            {
+                GamePlayManager.instance.param = GetComponent<ScroolBanar>().centerBanar.GetComponent<Banar>().parameter;
+                GamePlayManager.instance.SetPassName((int)level);
+                button.NextScene();
+            }
+
+        }
     }
 
     public void SetInfo()
@@ -57,22 +76,15 @@ public class SelectScene : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetJacket(GameObject obj)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (obj.GetComponent<Banar>())
         {
-            //マウスポジションからrayを飛ばして楽曲選択
-            Vector2 pos = Camera.main.WorldToScreenPoint(Input.mousePosition);
-            Ray ray = Camera.main.ScreenPointToRay(pos);
-            RaycastHit2D hit = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction);
-            if (hit.collider)
-            {
-                GamePlayManager.instance.param = GetComponent<ScroolBanar>().centerBanar.GetComponent<Banar>().parameter;
-                GamePlayManager.instance.SetPassName((int)level);
-                button.NextScene();
-            }
-
+            jacketImage.sprite = obj.GetComponent<Banar>().parameter.jacket;
+        }
+        else
+        {
+            jacketImage.sprite = null;
         }
     }
 }

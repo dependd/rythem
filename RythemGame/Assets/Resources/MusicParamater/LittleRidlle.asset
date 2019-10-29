@@ -15,5 +15,5 @@ MonoBehaviour:
   musicName: "\u30EA\u30C8\u30EB\u30EA\u30C9\u30EB"
   PassName: LittleRidlle
   difficulity: 0200000013000000
-  jacket: {fileID: 0}
+  jacket: {fileID: 21300000, guid: b460f079f8aaaf449b58bf08085d0b70, type: 3}
   music: {fileID: 8300000, guid: 50a5800b23443e64fb9597d6dc80a7da, type: 3}

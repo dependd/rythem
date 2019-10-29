@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Result : MonoBehaviour
 {
     [SerializeField] Text name;
-    [SerializeField] SpriteRenderer jacket;
+    [SerializeField] Image jacket;
     [SerializeField] GameObject exe;
     [SerializeField] Text score;
     [SerializeField] Text combo;

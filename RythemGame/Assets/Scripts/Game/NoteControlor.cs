@@ -4,6 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class NoteControlor : MonoBehaviour {
+    public enum Note
+    {
+        tap,
+        hold,
+        flick
+    }
+    public Note noteData;
     UIManager _UIManager;
     GameControlor controlor;
     int hs;

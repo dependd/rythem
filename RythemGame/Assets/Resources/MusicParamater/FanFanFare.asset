@@ -15,5 +15,5 @@ MonoBehaviour:
   musicName: "\u60C5\u71B1\u30D5\u30A1\u30F3\u30D5\u30A1\u30F3\u30D5\u30A1\u30FC\u30EC"
   PassName: FanFanFare
   difficulity: 0400000010000000
-  jacket: {fileID: 0}
+  jacket: {fileID: 21300000, guid: 1b1888515cb784b41816c667b1fb813f, type: 3}
   music: {fileID: 8300000, guid: c13ddb0b2ee018c4aa3781a975f9444c, type: 3}

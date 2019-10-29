@@ -15,5 +15,5 @@ MonoBehaviour:
   musicName: With Love
   PassName: WithLove
   difficulity: 040000000b000000
-  jacket: {fileID: 0}
+  jacket: {fileID: 21300000, guid: 91e999ec0771a1b4394912f9ff7d2837, type: 3}
   music: {fileID: 8300000, guid: ebf40ca21d804e34c83a2dc6fdf94119, type: 3}

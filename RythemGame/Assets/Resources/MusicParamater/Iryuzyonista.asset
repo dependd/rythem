@@ -15,5 +15,5 @@ MonoBehaviour:
   musicName: "\u30A4\u30EA\u30E5\u30FC\u30B8\u30E7\u30CB\u30B9\u30BF\uFF01"
   PassName: Iryuzyonista
   difficulity: 050000000f000000
-  jacket: {fileID: 0}
+  jacket: {fileID: 21300000, guid: 089a98b6bf6a98b4f9772b60957c2777, type: 3}
   music: {fileID: 8300000, guid: d92fb563f41d38c4bb65e36d9ece4044, type: 3}

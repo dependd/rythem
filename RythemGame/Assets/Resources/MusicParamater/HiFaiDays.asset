@@ -15,5 +15,5 @@ MonoBehaviour:
   musicName: "\u30CF\u30A4\u30D5\u30A1\u30A4\u2606\u30C7\u30A4\u30BA"
   PassName: HiFaiDays
   difficulity: 0600000013000000
-  jacket: {fileID: 0}
+  jacket: {fileID: 21300000, guid: 13f3b14b2d323094dbd0c504863098ae, type: 3}
   music: {fileID: 8300000, guid: df9910e81d12ee749b4d26c101b78c8c, type: 3}

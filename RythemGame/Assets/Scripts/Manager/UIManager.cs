@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField] Slider _ScoreSlider;
     [SerializeField] Text StartText;
     [SerializeField] Text hantei;
+    [SerializeField] Image back;
 	// Use this for initialization
 	void Start () {
 		
@@ -34,5 +35,10 @@ public class UIManager : MonoBehaviour {
     public void Hantei(string str)
     {
         hantei.text = str;
+    }
+
+    public void Back(Sprite sprite)
+    {
+        back.sprite = sprite;
     }
 }

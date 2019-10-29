@@ -15,5 +15,5 @@ MonoBehaviour:
   musicName: "Love\u221EDestiny"
   PassName: LoveDestiny
   difficulity: 0500000011000000
-  jacket: {fileID: 0}
+  jacket: {fileID: 21300000, guid: d75ea381b26d55145b998e05d0a367a0, type: 3}
   music: {fileID: 8300000, guid: e31b8fac2ec9a70448c29885ad5095f1, type: 3}

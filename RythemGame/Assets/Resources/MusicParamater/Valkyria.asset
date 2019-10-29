@@ -15,5 +15,5 @@ MonoBehaviour:
   musicName: "\u751F\u5B58\u672C\u80FD\u30F4\u30A1\u30EB\u30AD\u30E5\u30EA\u30A2"
   PassName: Valkyria
   difficulity: 0500000012000000
-  jacket: {fileID: 0}
+  jacket: {fileID: 21300000, guid: fcbc1827a4e6c8b44b905fdd7db93e41, type: 3}
   music: {fileID: 8300000, guid: 6ddf3c1b4926cd54db2de398e51acef4, type: 3}

@@ -14,6 +14,7 @@ public class GameControlor : MonoBehaviour {
     public GameObject[] notes;
     private float[] _timing;
     private int[] _lineNum;
+    private int[] _NoteNum;
     public int combo = 0;
     private int maxcombo = 0;
 
@@ -41,6 +42,7 @@ public class GameControlor : MonoBehaviour {
         InstanceTiming(highSpeed);
         _timing = new float[1024];
         _lineNum = new int[1024];
+        _UIManager.Back(GamePlayManager.instance.param.jacket);
         LoadCSV();
         score = 0;
         StartCoroutine(ReadyGo());
@@ -363,13 +365,13 @@ public class GameControlor : MonoBehaviour {
     {
         var obj = Instantiate(notes[num],new Vector3(-4.0f + (2.0f * num), 5f, 0), Quaternion.identity);
         obj.name = "Note"+ _SpawndNotesCount ;
+        
         obj.transform.parent = NoteLine[num].transform;
         obj.GetComponent<NoteControlor>().timing = _timing[_SpawndNotesCount];
     }
 
     void LoadCSV()
     {
-
         TextAsset csv = Resources.Load(GamePlayManager.instance.passName) as TextAsset;
         Debug.Log(csv.text);
         StringReader reader = new StringReader(csv.text);

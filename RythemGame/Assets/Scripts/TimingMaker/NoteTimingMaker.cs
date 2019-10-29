@@ -10,6 +10,8 @@ public class NoteTimingMaker : MonoBehaviour {
 
     public bool _isPlaying = false;
 
+    private float pushTime;
+
     void Start()
     {
     }
