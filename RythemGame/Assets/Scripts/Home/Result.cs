@@ -19,6 +19,7 @@ public class Result : MonoBehaviour
         //ジャケット
         score.text = GamePlayManager.instance.Score.ToString();
         combo.text = GamePlayManager.instance.MaxCombo.ToString();
+        jacket.sprite = GamePlayManager.instance.param.jacket;
         int count= 0;
         foreach (Transform hantei in exe.transform)
         {

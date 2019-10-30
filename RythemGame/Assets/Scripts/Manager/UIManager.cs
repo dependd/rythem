@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField] Text StartText;
     [SerializeField] Text hantei;
     [SerializeField] Image back;
+    [SerializeField] Text scoreText;
 	// Use this for initialization
 	void Start () {
 		
@@ -25,7 +26,9 @@ public class UIManager : MonoBehaviour {
     }
     public void ScoreUp(int score)
     {
-        _ScoreSlider.value += score;
+        _ScoreSlider.value = score;
+        scoreText.text = score.ToString();
+
     }
     public void StartTextChange(string str)
     {
@@ -41,4 +44,5 @@ public class UIManager : MonoBehaviour {
     {
         back.sprite = sprite;
     }
+    
 }

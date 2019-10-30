@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1e5d635e5cc0047ab3697ab17d7b9d, type: 3}
   m_Name: SweetWichesNight
   m_EditorClassIdentifier: 
-  musicName: "07 Sweet Witches' Night \uFF5E6\u4EBA\u76EE\u306F\u3060\u3041\u308C\uFF5E
-    (G"
+  musicName: "Sweet Witches' Night \uFF5E6\u4EBA\u76EE\u306F\u3060\u3041\u308C\uFF5E"
   PassName: SweetWichesNight
   difficulity: 020000000f000000
   jacket: {fileID: 21300000, guid: dabd5c6216d95e4459734fc3b8900a36, type: 3}

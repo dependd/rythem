@@ -11,8 +11,6 @@ public class Setting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetHS();
-        backImage.sprite = GamePlayManager.instance.param.jacket;
     }
 
     // Update is called once per frame
@@ -20,10 +18,11 @@ public class Setting : MonoBehaviour
     {
     }
 
-    void SetHS()
+    public void SetInit()
     {
         HStext.text = highSpeed.ToString();
         GamePlayManager.instance.HS = highSpeed;
+        backImage.sprite = GamePlayManager.instance.param.jacket;
     }
 
     public void ChangeHS(bool plus)
@@ -38,6 +37,6 @@ public class Setting : MonoBehaviour
             if (highSpeed <= 1) return;
             highSpeed--;
         }
-        SetHS();
+        SetInit();
     }
 }

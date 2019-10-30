@@ -10,6 +10,7 @@ public class GameControlor : MonoBehaviour {
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] clips;
     [SerializeField] GameObject[] NoteLine;
+    [SerializeField] SEManager _SE;
     public int score;
     public GameObject[] notes;
     private float[] _timing;
@@ -33,6 +34,7 @@ public class GameControlor : MonoBehaviour {
     float timing;
     public int highSpeed;
 
+    [SerializeField]ScoreManager _scoreManager;
     //判定の数を入れる配列
     [HideInInspector]public int[] hanteis = new int[5];
 
@@ -87,6 +89,10 @@ public class GameControlor : MonoBehaviour {
     }
     private void CheckKey()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
         if (Input.GetKeyDown(KeyCode.D))
         {
             if (NoteLine[0].transform.childCount == 0) return;
@@ -104,19 +110,19 @@ public class GameControlor : MonoBehaviour {
             {
                 case "Parfect":
                     Debug.Log("line0 == Parfect");
-                    SuccessTap(noteObj, 2000, false);
+                    SuccessTap(noteObj, 0, false);
                     break;
                 case "Great":
                     Debug.Log("line0 == Great");
-                    SuccessTap(noteObj, 1000, false);
+                    SuccessTap(noteObj, 1, false);
                     break;
                 case "Nice":
                     Debug.Log("line0 == Nice");
-                    SuccessTap(noteObj, 500, true);
+                    SuccessTap(noteObj, 2, true);
                     break;
                 case "Bad":
                     Debug.Log("line0 == Bad");
-                    SuccessTap(noteObj, 200, true);
+                    SuccessTap(noteObj, 3, true);
                     break;
                 case "Miss":
                     Debug.Log("miss");
@@ -144,19 +150,19 @@ public class GameControlor : MonoBehaviour {
             {
                 case "Parfect":
                     Debug.Log("line0 == Parfect");
-                    SuccessTap(noteObj, 2000, false);
+                    SuccessTap(noteObj, 0, false);
                     break;
                 case "Great":
                     Debug.Log("line0 == Great");
-                    SuccessTap(noteObj, 1000, false);
+                    SuccessTap(noteObj, 1, false);
                     break;
                 case "Nice":
                     Debug.Log("line0 == Nice");
-                    SuccessTap(noteObj, 500, true);
+                    SuccessTap(noteObj, 2, true);
                     break;
                 case "Bad":
                     Debug.Log("line0 == Bad");
-                    SuccessTap(noteObj, 200, true);
+                    SuccessTap(noteObj, 3, true);
                     break;
                 case "Miss":
                     Debug.Log("miss");
@@ -183,19 +189,19 @@ public class GameControlor : MonoBehaviour {
             {
                 case "Parfect":
                     Debug.Log("line0 == Parfect");
-                    SuccessTap(noteObj, 2000, false);
+                    SuccessTap(noteObj, 0, false);
                     break;
                 case "Great":
                     Debug.Log("line0 == Great");
-                    SuccessTap(noteObj, 1000, false);
+                    SuccessTap(noteObj, 1, false);
                     break;
                 case "Nice":
                     Debug.Log("line0 == Nice");
-                    SuccessTap(noteObj, 500, true);
+                    SuccessTap(noteObj, 2, true);
                     break;
                 case "Bad":
                     Debug.Log("line0 == Bad");
-                    SuccessTap(noteObj, 200, true);
+                    SuccessTap(noteObj, 3, true);
                     break;
                 case "Miss":
                     Debug.Log("miss");
@@ -223,19 +229,19 @@ public class GameControlor : MonoBehaviour {
             {
                 case "Parfect":
                     Debug.Log("line0 == Parfect");
-                    SuccessTap(noteObj, 2000, false);
+                    SuccessTap(noteObj, 0, false);
                     break;
                 case "Great":
                     Debug.Log("line0 == Great");
-                    SuccessTap(noteObj, 1000, false);
+                    SuccessTap(noteObj, 1, false);
                     break;
                 case "Nice":
                     Debug.Log("line0 == Nice");
-                    SuccessTap(noteObj, 500, true);
+                    SuccessTap(noteObj, 2, true);
                     break;
                 case "Bad":
                     Debug.Log("line0 == Bad");
-                    SuccessTap(noteObj, 200, true);
+                    SuccessTap(noteObj, 3, true);
                     break;
                 case "Miss":
                     Debug.Log("miss");
@@ -262,19 +268,19 @@ public class GameControlor : MonoBehaviour {
             {
                 case "Parfect":
                     Debug.Log("line0 == Parfect");
-                    SuccessTap(noteObj, 2000, false);
+                    SuccessTap(noteObj, 0, false);
                     break;
                 case "Great":
                     Debug.Log("line0 == Great");
-                    SuccessTap(noteObj, 1000, false);
+                    SuccessTap(noteObj, 1, false);
                     break;
                 case "Nice":
                     Debug.Log("line0 == Nice");
-                    SuccessTap(noteObj, 500, true);
+                    SuccessTap(noteObj, 2, true);
                     break;
                 case "Bad":
                     Debug.Log("line0 == Bad");
-                    SuccessTap(noteObj, 200, true);
+                    SuccessTap(noteObj, 3, true);
                     break;
                 case "Miss":
                     Debug.Log("miss");
@@ -288,6 +294,187 @@ public class GameControlor : MonoBehaviour {
         {
             foreach(Object i in NoteLine[1].transform){
                 Debug.Log(i);
+            }
+        }
+        if (Input.touchCount < 1) return;
+        for (int i = 0;i < Input.touchCount;i++)
+        {
+            Touch touch = Input.GetTouch(i);
+            Vector2 pos = Camera.main.ScreenToWorldPoint(touch.position);
+            if (pos.x <= -3f && touch.phase == TouchPhase.Began)
+            {
+                if (NoteLine[0].transform.childCount == 0) return;
+                var noteObj = NoteLine[0].GetComponentInChildren<NoteControlor>().gameObject;
+                //if (CheckNoteTiming(0,noteObj))
+                //{
+                //    Debug.Log("line0 == true");
+                //    SuccessTap(noteObj);
+                //}
+                //else 
+                //{
+                //    MissTap(noteObj);
+                //}
+                switch (CheckNoteTiming(0, noteObj))
+                {
+                    case "Parfect":
+                        SuccessTap(noteObj, 0, false);
+                        break;
+                    case "Great":
+                        SuccessTap(noteObj, 1, false);
+                        break;
+                    case "Nice":
+                        SuccessTap(noteObj, 2, true);
+                        break;
+                    case "Bad":
+                        SuccessTap(noteObj, 3, true);
+                        break;
+                    case "Miss":
+                        Debug.Log("miss");
+                        MissTap(noteObj);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (pos.x <= -1f && pos.x > -3f && touch.phase == TouchPhase.Began)
+            {
+                if (NoteLine[1].transform.childCount == 0) return;
+                var noteObj = NoteLine[1].GetComponentInChildren<NoteControlor>().gameObject;
+                //if (CheckNoteTiming(1,noteObj))
+                //{
+                //    Debug.Log("line1 == true");
+                //    SuccessTap(noteObj);
+                //}
+                //else
+                //{
+                //    MissTap(noteObj);
+                //}
+                switch (CheckNoteTiming(1, noteObj))
+                {
+                    case "Parfect":
+                        SuccessTap(noteObj, 0, false);
+                        break;
+                    case "Great":
+                        SuccessTap(noteObj, 1, false);
+                        break;
+                    case "Nice":
+                        SuccessTap(noteObj, 2, true);
+                        break;
+                    case "Bad":
+                        SuccessTap(noteObj, 3, true);
+                        break;
+                    case "Miss":
+                        Debug.Log("miss");
+                        MissTap(noteObj);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (pos.x <= 1f && pos.x > -1f && touch.phase == TouchPhase.Began)
+            {
+                if (NoteLine[2].transform.childCount == 0) return;
+                var noteObj = NoteLine[2].GetComponentInChildren<NoteControlor>().gameObject;
+                //if (CheckNoteTiming(2,noteObj))
+                //{
+                //    Debug.Log("line2 == true");
+                //    SuccessTap(noteObj);
+                //}
+                //else
+                //{
+                //    MissTap(noteObj);
+                //}
+                switch (CheckNoteTiming(2, noteObj))
+                {
+                    case "Parfect":
+                        SuccessTap(noteObj, 0, false);
+                        break;
+                    case "Great":
+                        SuccessTap(noteObj, 1, false);
+                        break;
+                    case "Nice":
+                        SuccessTap(noteObj, 2, true);
+                        break;
+                    case "Bad":
+                        SuccessTap(noteObj, 3, true);
+                        break;
+                    case "Miss":
+                        Debug.Log("miss");
+                        MissTap(noteObj);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (pos.x <= 3f && pos.x > 1f && touch.phase == TouchPhase.Began)
+            {
+                if (NoteLine[3].transform.childCount == 0) return;
+                var noteObj = NoteLine[3].GetComponentInChildren<NoteControlor>().gameObject;
+                //if (CheckNoteTiming(3,noteObj))
+                //{
+                //    Debug.Log("line3 == true");
+                //    SuccessTap(noteObj);
+                //}
+                //else
+                //{
+                //    MissTap(noteObj);
+                //}
+                switch (CheckNoteTiming(3, noteObj))
+                {
+                    case "Parfect":
+                        SuccessTap(noteObj, 0, false);
+                        break;
+                    case "Great":
+                        SuccessTap(noteObj, 1, false);
+                        break;
+                    case "Nice":
+                        SuccessTap(noteObj, 2, true);
+                        break;
+                    case "Bad":
+                        SuccessTap(noteObj, 3, true);
+                        break;
+                    case "Miss":
+                        Debug.Log("miss");
+                        MissTap(noteObj);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (pos.x > 3f && touch.phase == TouchPhase.Began)
+            {
+                if (NoteLine[4].transform.childCount == 0) return;
+                var noteObj = NoteLine[4].GetComponentInChildren<NoteControlor>().gameObject;
+                //if (CheckNoteTiming(4,noteObj))
+                //{
+                //    Debug.Log("line4 == true");
+                //    SuccessTap(noteObj);
+                //}
+                //else
+                //{
+                //    MissTap(noteObj);
+                //}
+                switch (CheckNoteTiming(4, noteObj))
+                {
+                    case "Parfect":
+                        SuccessTap(noteObj, 0, false);
+                        break;
+                    case "Great":
+                        SuccessTap(noteObj, 1, false);
+                        break;
+                    case "Nice":
+                        SuccessTap(noteObj, 2, true);
+                        break;
+                    case "Bad":
+                        SuccessTap(noteObj, 3, true);
+                        break;
+                    case "Miss":
+                        Debug.Log("miss");
+                        MissTap(noteObj);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
@@ -306,14 +493,33 @@ public class GameControlor : MonoBehaviour {
         }
         switch (Upper)
         {
-            case 2000:_UIManager.Hantei("Parfect");hanteis[0]++; break;
-            case 1000: _UIManager.Hantei("Great"); hanteis[1]++; break;
-            case 500: _UIManager.Hantei("Nice"); hanteis[2]++; break;
-            case 200: _UIManager.Hantei("Bad"); hanteis[3]++; break;
+            case 0:
+                _UIManager.Hantei("Parfect");
+                hanteis[0]++;
+                _SE.SetSE(0);
+                _scoreManager.AddScore(0);
+                break;
+            case 1:
+                _UIManager.Hantei("Great");
+                hanteis[1]++;
+                _SE.SetSE(1);
+                _scoreManager.AddScore(1);
+                break;
+            case 2:
+                _UIManager.Hantei("Nice");
+                hanteis[2]++;
+                _SE.SetSE(2);
+                _scoreManager.AddScore(2);
+                break;
+            case 3:
+                _UIManager.Hantei("Bad");
+                hanteis[3]++;
+                _SE.SetSE(2);
+                _scoreManager.AddScore(3);
+                break;
         }
         score += Upper;
         _UIManager.ComboCount(combo);
-        _UIManager.ScoreUp(score);
         Destroy(line);
         _LineCheckNoteCount++;
     }
@@ -391,6 +597,7 @@ public class GameControlor : MonoBehaviour {
         }
         maxCombo = i;
         Debug.Log("最大" +maxCombo+ "コンボ");
+        _scoreManager.SetOnNoteScore(maxCombo);
     }
 
     private void InstanceTiming(int hs)

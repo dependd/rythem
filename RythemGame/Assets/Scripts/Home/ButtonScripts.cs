@@ -26,6 +26,7 @@ public class ButtonScripts : MonoBehaviour
     [SerializeField] GameObject setting;
     //選択シーンのバナーのプレハブ
     [SerializeField] GameObject banar;
+    
     // Use this for initialization
     void Start()
     {
@@ -58,19 +59,13 @@ public class ButtonScripts : MonoBehaviour
     public void SelectScene()
     {
         scene = Scene.Select;
-
         select.GetComponent<SelectScene>().SetInfo();
-        
-        
-
     }
 
     public void SettingScene()
     {
         scene = Scene.Setting;
-        foreach (Transform obj in select.transform){
-            Destroy(obj.gameObject);
-        }
+        setting.GetComponent<Setting>().SetInit();
     }
 
     public void NextScene()
@@ -100,19 +95,20 @@ public class ButtonScripts : MonoBehaviour
             case Scene.Select:
                 foreach (Transform obj in select.transform)
                 {
-                    Destroy(obj.gameObject);
+                    if (obj.GetComponent<Banar>())
+                    {
+                        Destroy(obj.gameObject);
+                    }
                 }
+                select.GetComponent<SelectScene>().ReSetbanar();
                 select.SetActive(false);
                 start.SetActive(true);
+                scene = Scene.Title;
                 break;
             case Scene.Setting:
-                foreach (Transform obj in setting.transform)
-                {
-                    Destroy(obj.gameObject);
-                }
                 setting.SetActive(false);
                 select.SetActive(true);
-                
+                scene = Scene.Select;
                 break;
             case Scene.Title:                
                 //ゲーム終了確認
